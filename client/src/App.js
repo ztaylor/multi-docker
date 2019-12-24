@@ -13,7 +13,7 @@ function App() {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/other">Other page</Link>
+              <Link to="/other">Other</Link>
             </li>
           </ul>
         </header>
