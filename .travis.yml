@@ -1,0 +1,22 @@
+language: generic
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t ztaylor510/react-test -f ./client/Dockerfile.dev ./client
+
+script:
+  - docker run -e CI=true ztaylor510/react-test yarn test --coverage
+
+after_success:
+  - docker build -t ztaylor510/multi-client ./client
+  - docker build -t ztaylor510/multi-nginx ./nginx
+  - docker build -t ztaylor510/multi-server ./server
+  - docker build -t ztaylor510/multi-worker ./worker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push ztaylor510/multi-client
+  - docker push ztaylor510/multi-nginx
+  - docker push ztaylor510/multi-server
+  - docker push ztaylor510/multi-worker
