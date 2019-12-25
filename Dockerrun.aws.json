@@ -1,0 +1,9 @@
+{
+  "AWSEBDockerRunVersion": 2,
+  "containerDefinitions": [
+    {
+      "name": "client",
+      "image": "ztaylor510/multi-client"
+    }
+  ]
+}
