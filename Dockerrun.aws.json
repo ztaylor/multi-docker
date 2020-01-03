@@ -4,6 +4,18 @@
     {
       "name": "client",
       "image": "ztaylor510/multi-client"
+    },
+    {
+      "name": "api",
+      "image": "ztaylor510/multi-server"
+    },
+    {
+      "name": "nginx",
+      "image": "ztaylor510/multi-nginx"
+    },
+    {
+      "name": "worker",
+      "image": "ztaylor510/multi-worker"
     }
   ]
 }
