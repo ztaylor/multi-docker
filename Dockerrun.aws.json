@@ -3,19 +3,32 @@
   "containerDefinitions": [
     {
       "name": "client",
-      "image": "ztaylor510/multi-client"
+      "image": "ztaylor510/multi-client",
+      "hostname": "client",
+      "essential": false
     },
     {
-      "name": "api",
-      "image": "ztaylor510/multi-server"
-    },
-    {
-      "name": "nginx",
-      "image": "ztaylor510/multi-nginx"
+      "name": "server",
+      "image": "ztaylor510/multi-server",
+      "hostname": "api",
+      "essential": false
     },
     {
       "name": "worker",
-      "image": "ztaylor510/multi-worker"
+      "image": "ztaylor510/multi-worker",
+      "essential": false
+    },
+    {
+      "name": "nginx",
+      "image": "ztaylor510/multi-nginx",
+      "essential": true,
+      "portMappings": [
+        {
+          "hostPort": 80,
+          "containerPort": 80
+        }
+      ],
+      "links": ["client", "server"]
     }
   ]
 }
